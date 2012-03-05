@@ -1,0 +1,8 @@
+Binary Chime is meant to be run from cron, and will sound off the hour in
+binary.
+
+Add to your crontab like this:
+
+0 9-22 * * * /home/jewel/src/binary-chime/chime
+
+Where 9-22 are the hours you want it to be active.

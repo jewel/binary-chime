@@ -1,0 +1,25 @@
+#!/usr/bin/ruby -w
+# Play a binary chime representing the hour
+# License GPLv3
+
+Dir.chdir File.dirname( $0 )
+
+hour = Time.new.hour
+hour = ARGV.shift.to_i if ARGV.length > 0
+
+def play(s)
+	system( "aplay -q #{s}.wav &" )
+end
+
+play 'cs'
+sleep 1.4
+digits = []
+while hour != 0
+        digits.unshift hour & 1 == 1
+	hour >>= 1
+end
+
+digits.each { |digit|
+	play digit ? 'ch' : 'cl'
+	sleep 0.4
+}
